@@ -52,10 +52,10 @@ After the initial JSON parsing variables are set, an empty Hashtable is created 
 <br>
 Once all JSON objects have been iterated upon, the `$messageContent` variable is set using the keys within `$employeeHash`, sorted in order of their `$departure` values.
 <br>
-###Part 2: The GUI Prompt
+### Part 2: The GUI Prompt
 The `$messageBox` variable is used to defined the parameters of a GUI prompt that lists the user accounts gathered in Part 1 and prompts the script user to confirm, deny, or cancel the account disabling process.
 <br>
-###Part 3: GUI Prompt Selection/Disabling User Accounts in AD
+### Part 3: GUI Prompt Selection/Disabling User Accounts in AD
 If the script user chooses either "No" or "Cancel" from the GUI prompt, 1 of 2 messages will be outputted to their console window:
 <br>
 <br>
@@ -67,5 +67,5 @@ If the script user chooses either "No" or "Cancel" from the GUI prompt, 1 of 2 m
 <br>
 If the script user chooses "Yes", an empty array named `$successArray` is created and a For loop iterates over the keys of `$employeeHash`. Inside the For loop, the `Get-ADUser` command is run against each key in `$employeeHash`. If `Get-ADUser` can return a user account object for a key, the user account is disabled and the account's *Name* and *Enabled* attributes are added to `$successArray`. If `Get-ADUser` cannot return a user account object for a key, a warning is outputted to the console window.
 
-###Part 4: E-mail Notification
+### Part 4: E-mail Notification
 After the `$employeeHash` keys have been iterated upon, a variable, `$emailBody`, is created containing the contents of `$successAraay` in *String* format. Finally, a `Send-MailMessage` command is created using `$emailBody` and the variables specified in the **E-mail Notification Variables** section.
